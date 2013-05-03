@@ -93,7 +93,7 @@ angular.module('ui.date', [])
       if ( dateFormat ) {
         // Use the datepicker with the attribute value as the dateFormat string to convert to and from a string
         modelCtrl.$formatters.push(function(value) {
-          if (angular.isString(value) ) {
+          if (angular.isString(value) || (angular.isNumber(value) && dateFormat === '@')) {
             return jQuery.datepicker.parseDate(dateFormat, value);
           }
           return null;
